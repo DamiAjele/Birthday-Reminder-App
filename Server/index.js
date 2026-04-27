@@ -26,6 +26,9 @@ app.use('/api/v1', router);
 
 app.use(errorHandler);
 
+// Start scheduled jobs (cron)
+require('./cronSchedule');
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
