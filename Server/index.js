@@ -17,9 +17,11 @@ app.use(
   cors({
     origin: "birthday-reminder-app-ashen.vercel.app",
     credentials: true,
-    Methods: ["POST"],
+    Methods: ["POST", "OPTIONS"],
   }),
 );
+
+app.options("*", cors()); // Enable pre-flight for all routes
 
 //Routes
 app.use("/api/v1", router);
