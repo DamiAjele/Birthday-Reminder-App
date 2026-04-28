@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import PartyPopperIcon from '../assets/icons/party-popper.svg?react'
 import ArrowRightIcon from '../assets/icons/arrow-right.svg?react'
-import dotenv from 'dotenv'
-dotenv.config()
 import './CustomerForm.css'
 
-const API_URL = import.meta.env.VITE_API_URL || '/api/v1/customers';
+const API_URL = "https://birthday-reminder-app-l2y2.onrender.com/api/v1/customers";
 
 function CustomerForm() {
   const [form, setForm] = useState({ name: '', email: '', dayOfBirth: '' })

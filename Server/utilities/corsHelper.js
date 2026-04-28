@@ -1,6 +1,6 @@
 // Helper to provide CORS options and log denied origins for debugging
 const DEFAULT_ALLOWED = [
-  process.env.CLIENT_ORIGIN || 'http://localhost:5173',
+  process.env.CLIENT_ORIGIN || 'birthday-reminder-app-ashen.vercel.app',
   'http://localhost:5174',
   'http://localhost:5173',
 ];
