@@ -3,7 +3,8 @@ import PartyPopperIcon from '../assets/icons/party-popper.svg?react'
 import ArrowRightIcon from '../assets/icons/arrow-right.svg?react'
 import './CustomerForm.css'
 
-const API_URL = 'http://localhost:4000/api/v1/customers'
+const API_URL =
+  "https://birthday-reminder-app-g5ca.onrender.com/api/v1/customers";
 
 function CustomerForm() {
   const [form, setForm] = useState({ name: '', email: '', dayOfBirth: '' })

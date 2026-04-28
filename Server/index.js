@@ -13,10 +13,10 @@ const PORT = process.env.PORT || 4000;
 
 // Middlewares
 app.use(express.json());
-const clientOrigin = process.env.CLIENT_ORIGIN || "http://localhost:5173";
+const clientOrigin = process.env.CLIENT_ORIGIN || "birthday-remapp.netlify.app";
 app.use(
   cors({
-    origin: [clientOrigin, "http://localhost:5173", "http://localhost:5174"],
+    origin: [clientOrigin, "birthday-remapp.netlify.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   }),
