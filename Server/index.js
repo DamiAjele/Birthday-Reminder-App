@@ -21,8 +21,6 @@ app.use(
   }),
 );
 
-app.options("*", cors()); // Enable pre-flight for all routes
-
 //Routes
 app.use("/api/v1", router);
 
