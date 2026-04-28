@@ -4,7 +4,7 @@ import ArrowRightIcon from '../assets/icons/arrow-right.svg?react'
 import './CustomerForm.css'
 
 const API_URL =
-  "https://birthday-reminder-app-g5ca.onrender.com/api/v1/customers";
+  "https://birthday-reminder-app-l2y2.onrender.com/api/v1/customers";
 
 function CustomerForm() {
   const [form, setForm] = useState({ name: '', email: '', dayOfBirth: '' })
