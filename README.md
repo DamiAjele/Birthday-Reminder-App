@@ -28,6 +28,8 @@ CelebrationHub (Birthday Reminder App) is a simple automation system that collec
 
 This project is intended as an MVP to replace manual spreadsheet workflows and ensure timely, personalized customer outreach on birthdays.
 
+See: [URL](https://birthday-reminder-app-ashen.vercel.app)
+
 ---
 
 ## Features
@@ -111,7 +113,7 @@ npm install
 npm run dev
 ```
 
-Open the client URL shown by Vite (usually `http://localhost:5173`) and submit the customer form.
+Open the client URL shown by Vite  and submit the customer form.
 
 To test the scheduled job immediately (manual run):
 
