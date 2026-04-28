@@ -14,11 +14,11 @@ const PORT = process.env.PORT || 4000;
 // Middlewares
 app.use(express.json());
 app.use(
-  cors({
-    origin: "birthday-reminder-app-ashen.vercel.app",
-    credentials: true,
-    Methods: ["POST", "OPTIONS"],
-  }),
+  cors(/**{
+//     origin: "birthday-reminder-app-ashen.vercel.app",
+//     credentials: true,
+//     Methods: ["POST", "OPTIONS"],
+//   }**/),
 );
 
 //Routes
