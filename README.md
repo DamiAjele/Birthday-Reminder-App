@@ -122,6 +122,35 @@ npm run send-birthdays
 
 ---
 
+## Production Build & Deployment (quick guide)
+
+1. Configure production client API URL
+
+- Copy `Client/.env.production.example` to `Client/.env.production` and set `VITE_API_URL` to your production API base (e.g. `https://api.yourdomain.com/api/v1`).
+
+2. Build the client
+
+```bash
+cd Client
+npm install
+npm run build
+```
+
+3. Deploy the built client
+
+- Upload the `dist/` folder contents to your static host (S3, Netlify, Vercel) or to your web server (e.g., `/var/www/celebrationhub`).
+- If using the Nginx reverse proxy example in `DEPLOYMENT.md`, you can serve the `dist` folder from the web root and proxy `/api` to the backend (no CORS needed).
+
+4. Server configuration
+
+- Ensure the backend `Server/.env` has `CLIENT_ORIGIN` set to your production client origin, or deploy the client and API under the same origin and use the Nginx proxy.
+- Restart your backend so env vars take effect.
+
+5. Verify
+
+- Open your production URL and submit the form. Use DevTools Network tab to confirm the POST goes to the correct `VITE_API_URL` or to `/api/v1/customers` if proxied.
+
+
 ## Configuration
 
 Create a `.env` file in the `Server/` folder with the following variables (do not commit secrets):
