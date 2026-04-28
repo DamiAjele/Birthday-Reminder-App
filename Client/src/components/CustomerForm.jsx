@@ -4,7 +4,7 @@ import ArrowRightIcon from "../assets/icons/arrow-right.svg?react";
 import "./CustomerForm.css";
 
 const API_URL =
-  "https://birthday-reminder-app-l2y2.onrender.com/api/v1/customers";
+  "https://birthday-reminder-app-l2y2.onrender.com";
 
 function CustomerForm() {
   const [form, setForm] = useState({ name: "", email: "", dayOfBirth: "" });
@@ -23,7 +23,7 @@ function CustomerForm() {
     setErrorMsg("");
 
     try {
-      const res = await fetch(API_URL, {
+      const res = await fetch(`${API_URL}/api/v1/customers`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
