@@ -1,47 +1,48 @@
-import { useState } from 'react'
-import PartyPopperIcon from '../assets/icons/party-popper.svg?react'
-import ArrowRightIcon from '../assets/icons/arrow-right.svg?react'
-import './CustomerForm.css'
+import { useState } from "react";
+import PartyPopperIcon from "../assets/icons/party-popper.svg?react";
+import ArrowRightIcon from "../assets/icons/arrow-right.svg?react";
+import "./CustomerForm.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://birthday-reminder-app-l2y2.onrender.com/api/v1/customers";
+const API_URL =
+  "https://birthday-reminder-app-l2y2.onrender.com/api/v1/customers";
 
 function CustomerForm() {
-  const [form, setForm] = useState({ name: '', email: '', dayOfBirth: '' })
-  const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
-  const [errorMsg, setErrorMsg] = useState('')
-  const [submittedName, setSubmittedName] = useState('')
+  const [form, setForm] = useState({ name: "", email: "", dayOfBirth: "" });
+  const [status, setStatus] = useState("idle"); // 'idle' | 'loading' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState("");
+  const [submittedName, setSubmittedName] = useState("");
 
   function handleChange(e) {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    setStatus('loading')
-    setErrorMsg('')
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMsg("");
 
     try {
       const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
           dayOfBirth: form.dayOfBirth,
         }),
-      })
+      });
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        throw new Error(data.message || `Error ${res.status}`)
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || `Error ${res.status}`);
       }
 
-      setSubmittedName(form.name)
-      setStatus('success')
+      setSubmittedName(form.name);
+      setStatus("success");
     } catch (err) {
-      setErrorMsg(err.message || 'Something went wrong. Please try again.')
-      setStatus('error')
+      setErrorMsg(err.message || "Something went wrong. Please try again.");
+      setStatus("error");
     }
   }
 
@@ -51,7 +52,7 @@ function CustomerForm() {
       <div className="cf-accent-bar" aria-hidden="true" />
 
       <div className="cf-body">
-        {status === 'success' ? (
+        {status === "success" ? (
           <SuccessView name={submittedName} />
         ) : (
           <>
@@ -61,7 +62,9 @@ function CustomerForm() {
                 <PartyPopperIcon className="cf-icon" width={29} height={27} />
               </div>
               <h1 className="cf-title">Enter Your Details</h1>
-              <p className="cf-subtitle">Please provide your information below.</p>
+              <p className="cf-subtitle">
+                Please provide your information below.
+              </p>
             </div>
 
             {/* Form */}
@@ -119,7 +122,7 @@ function CustomerForm() {
                 </p>
               </div>
 
-              {status === 'error' && (
+              {status === "error" && (
                 <div className="cf-error" role="alert">
                   {errorMsg}
                 </div>
@@ -128,10 +131,10 @@ function CustomerForm() {
               <button
                 className="cf-btn"
                 type="submit"
-                disabled={status === 'loading'}
-                aria-busy={status === 'loading'}
+                disabled={status === "loading"}
+                aria-busy={status === "loading"}
               >
-                {status === 'loading' ? (
+                {status === "loading" ? (
                   <>
                     <span className="cf-spinner" aria-hidden="true" />
                     Submitting…
@@ -153,19 +156,21 @@ function CustomerForm() {
         )}
       </div>
     </div>
-  )
+  );
 }
 
 function SuccessView({ name }) {
   return (
     <div className="cf-success" role="status">
-      <div className="cf-success-emoji" aria-hidden="true">🎉</div>
+      <div className="cf-success-emoji" aria-hidden="true">
+        🎉
+      </div>
       <h2 className="cf-success-title">You&apos;re on the list, {name}!</h2>
       <p className="cf-success-msg">
         We&apos;ll surprise you on your birthday. 🎂
       </p>
     </div>
-  )
+  );
 }
 
-export default CustomerForm
+export default CustomerForm;
