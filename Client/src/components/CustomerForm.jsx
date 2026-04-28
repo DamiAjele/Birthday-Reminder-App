@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import PartyPopperIcon from '../assets/icons/party-popper.svg?react'
 import ArrowRightIcon from '../assets/icons/arrow-right.svg?react'
+import dotenv from 'dotenv'
+import process from 'process'
+dotenv.config()
 import './CustomerForm.css'
 
 const API_URL = process.env.API_URL ||
